@@ -1,0 +1,20 @@
+{
+    "name": "ddeboer/vatin-bundle",
+    "description": "Symfony2 bundle for the VATIN library",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "David de Boer",
+            "email": "david@ddeboer.nl"
+        }
+    ],
+    "require": {
+        "ddeboer/vatin": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ddeboer\\VatinBundle": ""
+        }
+    },
+    "target-dir": "Ddeboer/VatinBundle"
+}

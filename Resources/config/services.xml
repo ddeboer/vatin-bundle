@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ddeboer_vatin.validator"
+                 class="Ddeboer\VatinBundle\Validator\Constraints\VatinValidator">
+            <argument type="service" id="ddeboer_vatin.vatin_validator" />
+        </service>
+        <service id="ddeboer_vatin.vatin_validator" class="Ddeboer\Vatin\Validator" public="false">
+            <argument type="service" id="ddeboer_vatin.vies.client" />
+        </service>
+        <service id="ddeboer_vatin.vies.client" class="Ddeboer\Vatin\Vies\Client" public="false">
+        </service>
+    </services>
+
+</container>
