@@ -1,6 +1,7 @@
 {
     "name": "ddeboer/vatin-bundle",
     "description": "Symfony2 bundle for the VATIN library",
+    "keywords": [ "vat", "tax", "btw" ],
     "type": "symfony-bundle",
     "authors": [
         {
