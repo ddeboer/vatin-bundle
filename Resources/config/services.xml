@@ -8,6 +8,7 @@
         <service id="ddeboer_vatin.validator"
                  class="Ddeboer\VatinBundle\Validator\Constraints\VatinValidator">
             <argument type="service" id="ddeboer_vatin.vatin_validator" />
+            <tag name="validator.constraint_validator" alias="ddeboer_vatin.validator" />
         </service>
         <service id="ddeboer_vatin.vatin_validator" class="Ddeboer\Vatin\Validator" public="false">
             <argument type="service" id="ddeboer_vatin.vies.client" />
