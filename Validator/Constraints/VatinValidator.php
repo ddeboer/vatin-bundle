@@ -32,7 +32,7 @@ class VatinValidator extends ConstraintValidator
     /**
      * {@inheritdoc}
      */
-    public function isValid($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint)
     {
         if (null === $value || '' === $value) {
             return;
@@ -42,13 +42,14 @@ class VatinValidator extends ConstraintValidator
             return;
         }
 
-        $this->setMessage($constraint->message);
+        $this->context->addViolation($constraint->message);
     }
 
     /**
      * Is the value a valid VAT identification number?
      *
-     * @param string $value Value
+     * @param string $value          Value
+     * @param bool   $checkExistence Also check whether the VAT number exists
      *
      * @return bool
      */
