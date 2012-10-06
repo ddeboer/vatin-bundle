@@ -3,6 +3,7 @@
     "description": "Symfony2 bundle for the VATIN library",
     "keywords": [ "vat", "tax", "btw" ],
     "type": "symfony-bundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "David de Boer",
