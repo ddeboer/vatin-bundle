@@ -10,7 +10,7 @@
             <argument type="service" id="ddeboer_vatin.vatin_validator" />
             <tag name="validator.constraint_validator" alias="ddeboer_vatin.validator" />
         </service>
-        <service id="ddeboer_vatin.vatin_validator" class="Ddeboer\Vatin\Validator" public="false">
+        <service id="ddeboer_vatin.vatin_validator" class="Ddeboer\Vatin\Validator">
             <call method="setViesClient">
                 <argument type="service" id="ddeboer_vatin.vies.client" />
             </call>
