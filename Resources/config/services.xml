@@ -15,8 +15,7 @@
                 <argument type="service" id="ddeboer_vatin.vies.client" />
             </call>
         </service>
-        <service id="ddeboer_vatin.vies.client" class="Ddeboer\Vatin\Vies\Client" public="false">
-        </service>
+        <service id="ddeboer_vatin.vies.client" class="Ddeboer\Vatin\Vies\Client" />
     </services>
 
 </container>
