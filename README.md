@@ -1,6 +1,6 @@
 VATIN bundle
 ============
-[![Build Status](https://travis-ci.org/ddeboer/data-import.png?branch=master)](https://travis-ci.org/ddeboer/data-import)
+[![Build Status](https://travis-ci.org/ddeboer/vatin-bundle.png?branch=master)](https://travis-ci.org/ddeboer/vatin-bundle)
 [![Latest Stable Version](https://poser.pugx.org/ddeboer/vatin-bundle/v/stable.png)](https://packagist.org/packages/ddeboer/vatin-bundle)
 
 A Symfony2 bundle for the [VATIN library](https://github.com/ddeboer/vatin).
