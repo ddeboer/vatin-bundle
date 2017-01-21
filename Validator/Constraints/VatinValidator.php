@@ -17,7 +17,7 @@ class VatinValidator extends ConstraintValidator
      *
      * @var Validator
      */
-    protected $validator;
+    private $validator;
 
     /**
      * Constructor
@@ -42,7 +42,8 @@ class VatinValidator extends ConstraintValidator
             return;
         }
 
-        $this->context->addViolation($constraint->message);
+        $this->context->buildViolation($constraint->message)
+            ->addViolation();
     }
 
     /**
@@ -53,7 +54,7 @@ class VatinValidator extends ConstraintValidator
      *
      * @return bool
      */
-    protected function isValidVatin($value, $checkExistence)
+    private function isValidVatin($value, $checkExistence)
     {
         return $this->validator->isValid($value, $checkExistence);
     }
