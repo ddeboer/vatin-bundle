@@ -12,4 +12,4 @@ matrix:
 
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
-script: phpunit --coverage-text
+script: vendor/bin/phpunit --coverage-text
