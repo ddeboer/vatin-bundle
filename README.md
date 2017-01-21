@@ -3,7 +3,7 @@ VATIN bundle
 [![Build Status](https://travis-ci.org/ddeboer/vatin-bundle.svg?branch=master)](https://travis-ci.org/ddeboer/vatin-bundle)
 [![Latest Stable Version](https://poser.pugx.org/ddeboer/vatin-bundle/v/stable.png)](https://packagist.org/packages/ddeboer/vatin-bundle)
 
-A Symfony2 bundle for the [VATIN library](https://github.com/ddeboer/vatin).
+A Symfony bundle for the [VATIN library](https://github.com/ddeboer/vatin).
 
 Installation
 ------------
@@ -11,7 +11,7 @@ Installation
 This library is available on [Packagist](https://packagist.org/packages/ddeboer/vatin-bundle):
 
 ```bash
-$ composer require ddeboer/vatin-bundle:@stable
+$ composer require ddeboer/vatin-bundle
 ```
 
 Then add the bundle to your application:
@@ -20,11 +20,11 @@ Then add the bundle to your application:
 // app/AppKernel.php
 public function registerBundles()
 {
-    return array(
+    return [
         ...
         new Ddeboer\VatinBundle\DdeboerVatinBundle(),
         ...
-    );
+    ];
 }
 ```
 
