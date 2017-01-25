@@ -4,6 +4,7 @@ namespace Ddeboer\VatinBundle\Tests\Functional;
 
 use Ddeboer\Vatin\Exception\ViesException;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ValidatorAnnotationTest extends WebTestCase
@@ -39,7 +40,11 @@ class ValidatorAnnotationTest extends WebTestCase
         $model->vatCheckExistence = 'NL123456789B01';
         try {
             $this->assertCount(1, $this->validator->validate($model));
-        } catch (ViesException $e) {
+        } catch (ValidatorException $e) {
+            if (!$e->getPrevious() instanceof ViesException) {
+                throw $e;
+            }
+
             // Ignore unreachable VIES service: at least the check was triggered
         }
     }
