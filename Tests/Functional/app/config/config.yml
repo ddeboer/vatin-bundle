@@ -1,0 +1,5 @@
+framework:
+    secret: ddeboer
+    test: ~
+    validation:
+        enable_annotations: true
