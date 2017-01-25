@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "ddeboer/vatin": "^1.0",
+        "ddeboer/vatin": "^2.0",
         "symfony/framework-bundle": "^2.7 || ^3.0",
         "symfony/validator": "^2.7 || ^3.0"
     },
