@@ -46,6 +46,7 @@ class Company
      */
     protected $vatNumber;
 ```
+
 Symfony’s validator will now check whether `$vatNumber` has a valid VAT number
 format. For more information, see [Symfony’s documentation](http://symfony.com/doc/current/book/validation.html).
 
@@ -62,7 +63,21 @@ Additionally, you can check whether the VAT number is in use:
 
 The validator will now check the VAT number against the
 [VAT Information Exchange System (VIES)](http://ec.europa.eu/taxation_customs/vies/faq.html)
-SOAP web service.
+SOAP web service. This service’s availability is rather unreliable, so it’s a
+good idea to catch the case where it’s unreachable:
+
+
+```php
+use Symfony\Component\Validator\Exception\ValidatorException;
+
+try {
+    if ($validator->isValid()) {
+        // Happy flow
+    }
+} catch (ValidatorException $e) {
+    // VAT could not be validated because VIES service is unreachable
+}
+```
 
 ### Using the services directly
 
