@@ -5,9 +5,9 @@ namespace Ddeboer\VatinBundle\Tests\Validator\Constraints;
 use Ddeboer\VatinBundle\Validator\Constraints\Vatin;
 use Ddeboer\VatinBundle\Validator\Constraints\VatinValidator;
 use Ddeboer\Vatin\Validator;
-use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
+use Symfony\Component\Validator\Tests\Constraints\AbstractConstraintValidatorTest;
 
-class ValidatorTest extends ConstraintValidatorTestCase
+class ValidatorTest extends AbstractConstraintValidatorTest
 {
     protected function createValidator()
     {
