@@ -9,8 +9,9 @@ php:
   - 7.1
 
 matrix:
-  - php: 5.5
-    env: COMPOSER_FLAGS="--prefer-lowest"
+  include:
+    - php: 5.5
+      env: COMPOSER_FLAGS="--prefer-lowest"
 
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
