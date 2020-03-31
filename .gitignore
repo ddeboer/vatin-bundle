@@ -1,3 +1,4 @@
 vendor/
 composer.lock
 Tests/Functional/app/cache
+.idea
