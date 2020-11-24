@@ -23,6 +23,9 @@
     "autoload": {
         "psr-4": {
             "Ddeboer\\VatinBundle\\": ""
-        }
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
     }
 }
