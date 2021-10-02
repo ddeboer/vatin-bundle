@@ -21,6 +21,9 @@ class ValidatorAnnotationTest extends WebTestCase
         $this->validator = $container->get('validator');
     }
 
+    /**
+     * @requires PHP 8.0
+     */
     public function testValid()
     {
         $model = new Model();
@@ -31,6 +34,9 @@ class ValidatorAnnotationTest extends WebTestCase
         $this->assertCount(0, $this->validator->validate($model));
     }
 
+    /**
+     * @requires PHP 8.0
+     */
     public function testCheckExistence()
     {
         $model = new Model();
@@ -48,8 +54,7 @@ class ValidatorAnnotationTest extends WebTestCase
 
 
         # valid value
-        #$model->vatCheckExistence = 'NL123456789B01';
-        $model->vatCheckExistence = 'DE239472541'; # see https://www.golem.de/sonstiges/impressum.html
+        $model->vatCheckExistence = 'NL123456789B01';
         try {
             $this->assertCount(0, $this->validator->validate($model));
         } catch (ValidatorException $e) {
