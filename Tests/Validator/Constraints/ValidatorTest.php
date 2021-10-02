@@ -7,14 +7,9 @@ use Ddeboer\VatinBundle\Validator\Constraints\VatinValidator;
 use Ddeboer\Vatin\Validator;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
-// BC for Symfony 2 and Symfony 4. To be removed when support for Symfony 2 is dropped
-if (!class_exists('Symfony\Component\Validator\Test\ConstraintValidatorTestCase')) {
-    class_alias('Symfony\Component\Validator\Tests\Constraints\AbstractConstraintValidatorTest', 'Symfony\Component\Validator\Test\ConstraintValidatorTestCase');
-}
-
 class ValidatorTest extends ConstraintValidatorTestCase
 {
-    protected function createValidator()
+    protected function createValidator(): VatinValidator
     {
         return new VatinValidator(new Validator());
     }

@@ -14,7 +14,7 @@ class ValidatorAnnotationTest extends WebTestCase
      */
     private $validator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         static::bootKernel();
         $container = static::$kernel->getContainer();
@@ -25,7 +25,7 @@ class ValidatorAnnotationTest extends WebTestCase
     {
         $model = new Model();
         $errors = $this->validator->validate($model);
-        $this->assertEquals(0, count($errors));
+        $this->assertCount(0, $errors);
 
         $model->vat = 'NL123456789B01';
         $this->assertCount(0, $this->validator->validate($model));
@@ -34,12 +34,24 @@ class ValidatorAnnotationTest extends WebTestCase
     public function testCheckExistence()
     {
         $model = new Model();
+        # invalid value
         $model->vatCheckExistence = '123';
-        $this->assertCount(1, $this->validator->validate($model));
-
-        $model->vatCheckExistence = 'NL123456789B01';
         try {
-            $this->assertCount(1, $this->validator->validate($model));
+            $this->assertCount(0, $this->validator->validate($model));
+        } catch (ValidatorException $e) {
+            if (!$e->getPrevious() instanceof ViesException) {
+                throw $e;
+            }
+
+            // Ignore unreachable VIES service: at least the check was triggered
+        }
+
+
+        # valid value
+        #$model->vatCheckExistence = 'NL123456789B01';
+        $model->vatCheckExistence = 'DE239472541'; # see https://www.golem.de/sonstiges/impressum.html
+        try {
+            $this->assertCount(0, $this->validator->validate($model));
         } catch (ValidatorException $e) {
             if (!$e->getPrevious() instanceof ViesException) {
                 throw $e;

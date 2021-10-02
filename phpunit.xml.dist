@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit bootstrap="./Tests/Functional/app/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         syntaxCheck="true">
-    <testsuites>
-        <testsuite name="ddeboer/vatin-bundle test suite">
-            <directory suffix="Test.php">./Tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>./</directory>
-            <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
-
-    <php>
-        <server name="KERNEL_DIR" value="./Tests/Functional/app"/>
-        <server name="KERNEL_CLASS" value="AppKernel"/>
-        <ini name="default_socket_timeout" value="3"/>
-    </php>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./Tests/Functional/app/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">./</directory>
+    </include>
+    <exclude>
+      <directory>./github</directory>
+      <directory>./Resources</directory>
+      <directory>./Tests</directory>
+      <directory>./var</directory>
+      <directory>./vendor</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="ddeboer/vatin-bundle test suite">
+      <directory suffix="Test.php">./Tests</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <server name="KERNEL_DIR" value="./Tests/Functional/app"/>
+    <server name="KERNEL_CLASS" value="AppKernel"/>
+    <ini name="default_socket_timeout" value="3"/>
+  </php>
 </phpunit>
