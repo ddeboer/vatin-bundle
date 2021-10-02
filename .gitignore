@@ -1,4 +1,7 @@
 vendor/
+var/
 composer.lock
 Tests/Functional/app/cache
 .idea
+.phpunit.result.cache
+.github/

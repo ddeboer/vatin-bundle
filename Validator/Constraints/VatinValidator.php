@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Exception\ValidatorException;
 
 /**
  * Validate a VAT identification number using the ddeboer/vatin library
- *
  */
 class VatinValidator extends ConstraintValidator
 {
@@ -23,8 +22,6 @@ class VatinValidator extends ConstraintValidator
 
     /**
      * Constructor
-     *
-     * @param Validator $validator VATIN validator
      */
     public function __construct(Validator $validator)
     {
@@ -40,23 +37,26 @@ class VatinValidator extends ConstraintValidator
             return;
         }
 
-        if ($this->isValidVatin($value, $constraint->checkExistence)) {
-            return;
-        }
+        try {
+            #var_dump('Check '.$value. ' '.$constraint->checkExistence);
+            if ($this->isValidVatin($value, $constraint->checkExistence)) {
+                return;
+            }
 
-        $this->context->buildViolation($constraint->message)
-            ->addViolation();
+            $this->context->buildViolation($constraint->message)->addViolation();
+        }
+        catch (\Exception $e)
+        {
+         #var_dump($e->getMessage());
+         #var_dump("error build violation for ".$value);
+         $this->context->buildViolation($constraint->message)->addViolation();
+        }
     }
 
     /**
      * Is the value a valid VAT identification number?
-     *
-     * @param string $value          Value
-     * @param bool   $checkExistence Also check whether the VAT number exists
-     *
-     * @return bool
      */
-    private function isValidVatin($value, $checkExistence)
+    private function isValidVatin(string $value, bool $checkExistence): bool
     {
         try {
             return $this->validator->isValid($value, $checkExistence);
