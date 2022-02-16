@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="./Tests/Functional/app/autoload.php"
+<phpunit bootstrap="./tests/Functional/app/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -24,7 +24,7 @@
     </filter>
 
     <php>
-        <server name="KERNEL_DIR" value="./Tests/Functional/app"/>
+        <server name="KERNEL_DIR" value="./tests/Functional/app"/>
         <server name="KERNEL_CLASS" value="AppKernel"/>
         <ini name="default_socket_timeout" value="3"/>
     </php>
