@@ -18,7 +18,7 @@ class ValidatorAnnotationTest extends WebTestCase
     {
         static::bootKernel();
         $container = static::$kernel->getContainer();
-        $this->validator = $container->get('validator');
+        $this->validator = $container->get('test.validator');
     }
 
     public function testValid()

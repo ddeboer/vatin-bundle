@@ -20,7 +20,7 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^8.5 || ^9.0",
         "doctrine/annotations": "^1.2",
         "symfony/framework-bundle": "^5.0 || ^6.0",
         "symfony/yaml": "^5.0 || ^6.0"

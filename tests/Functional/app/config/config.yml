@@ -5,3 +5,8 @@ framework:
         enabled: true
     validation:
         enable_annotations: true
+
+services:
+    test.validator:
+        alias: validator
+        public: true
