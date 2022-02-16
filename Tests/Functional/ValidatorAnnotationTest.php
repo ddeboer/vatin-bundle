@@ -14,7 +14,7 @@ class ValidatorAnnotationTest extends WebTestCase
      */
     private $validator;
 
-    protected function setUp()
+    protected function setUp():void
     {
         static::bootKernel();
         $container = static::$kernel->getContainer();

@@ -1,5 +1,7 @@
 framework:
     secret: ddeboer
     test: ~
+    annotations:
+        enabled: true
     validation:
         enable_annotations: true
