@@ -8,16 +8,16 @@
 >
     <testsuites>
         <testsuite name="ddeboer/vatin-bundle test suite">
-            <directory suffix="Test.php">./Tests</directory>
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./</directory>
+            <directory>./src</directory>
             <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
+                <directory>./src/Resources</directory>
+                <directory>./tests</directory>
                 <directory>./vendor</directory>
             </exclude>
         </whitelist>
