@@ -11,7 +11,7 @@ Installation
 This library is available on [Packagist](https://packagist.org/packages/ddeboer/vatin-bundle):
 
 ```bash
-$ composer require ddeboer/vatin-bundle
+composer require ddeboer/vatin-bundle
 ```
 
 Then add the bundle to your application:
@@ -55,6 +55,8 @@ format. For more information, see [Symfony’s documentation](http://symfony.com
 Additionally, you can check whether the VAT number is in use:
 
 ```php
+    use Ddeboer\VatinBundle\Validator\Constraints\Vatin;
+
     /**
      * @Vatin(checkExistence=true)
      */
@@ -88,7 +90,7 @@ $validator = $container->get('ddeboer_vatin.vatin_validator');
 $bool = $validator->isValid('NL123456789B01');
 ```
 
-Additionally check whether the VAT number is in use:
+Additionally, check whether the VAT number is in use:
 
 ```php
 $bool = $validator->isValid('NL123456789B01', true);
