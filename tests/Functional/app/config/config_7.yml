@@ -1,0 +1,10 @@
+framework:
+  secret: ddeboer
+  test: ~
+  validation:
+    enable_attributes: true
+
+services:
+  test.validator:
+    alias: validator
+    public: true

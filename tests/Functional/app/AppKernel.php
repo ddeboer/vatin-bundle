@@ -15,6 +15,10 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__.'/config/config.yml');
+        if (self::MAJOR_VERSION >= 7) {
+            $loader->load(__DIR__ . '/config/config_7.yml');
+        } else {
+            $loader->load(__DIR__ . '/config/config.yml');
+        }
     }
 }
