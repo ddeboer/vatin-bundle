@@ -34,7 +34,7 @@ class VatinValidator extends ConstraintValidator
     /**
      * {@inheritdoc}
      */
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if (null === $value || '' === $value) {
             return;
@@ -56,7 +56,7 @@ class VatinValidator extends ConstraintValidator
      *
      * @return bool
      */
-    private function isValidVatin($value, $checkExistence)
+    private function isValidVatin($value, $checkExistence): bool
     {
         try {
             return $this->validator->isValid($value, $checkExistence);
