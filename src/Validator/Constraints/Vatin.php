@@ -41,7 +41,7 @@ class Vatin extends Constraint
         parent::__construct($options ?? [], $groups, $payload);
     }
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'ddeboer_vatin.validator';
     }
