@@ -1,0 +1,8 @@
+framework:
+    secret: ddeboer
+    test:   true
+
+services:
+    test.validator:
+        alias:  validator
+        public: true

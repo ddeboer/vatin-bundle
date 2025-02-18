@@ -11,12 +11,12 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.3', '7.4', '8.0', '8.1']
+        php-version: ['8.1', '8.2', '8.3', '8.4']
         include:
-          - { php-version: '7.2', dependencies: '--prefer-lowest' }
+          - { php-version: '8.1', dependencies: '--prefer-lowest' }
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -28,4 +28,7 @@ jobs:
         run: composer update --no-interaction ${{ matrix.dependencies }}
 
       - name: Run tests
-        run: vendor/bin/phpunit --coverage-text
+        run: vendor/bin/phpunit
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan

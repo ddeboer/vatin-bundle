@@ -32,18 +32,15 @@ Usage
 
 ### Validate number format
 
-Use the validator to validate a property on your models. For instance using
-annotations:
+Use the validator to validate a property on your models.
 
 ```php
 use Ddeboer\VatinBundle\Validator\Constraints\Vatin;
 
 class Company
 {
-    /**
-     * @Vatin
-     */
-    protected $vatNumber;
+    #[Vatin]
+    protected string $vatNumber;
 ```
 
 Symfony’s validator will now check whether `$vatNumber` has a valid VAT number
@@ -56,10 +53,8 @@ Additionally, you can check whether the VAT number is in use:
 ```php
     use Ddeboer\VatinBundle\Validator\Constraints\Vatin;
 
-    /**
-     * @Vatin(checkExistence=true)
-     */
-    protected $vatNumber;
+    #[Vatin(checkExistence=true)]
+    protected string $vatNumber;
 ```
 
 The validator will now check the VAT number against the

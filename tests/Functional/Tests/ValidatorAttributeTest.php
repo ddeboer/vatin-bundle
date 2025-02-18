@@ -1,27 +1,23 @@
 <?php
 
-namespace Ddeboer\VatinBundle\Tests\Functional;
+namespace Ddeboer\VatinBundle\Tests\Functional\Tests;
 
 use Ddeboer\Vatin\Exception\ViesException;
+use Ddeboer\VatinBundle\Tests\Functional\Model\Model;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class ValidatorAnnotationTest extends WebTestCase
+class ValidatorAttributeTest extends WebTestCase
 {
-    /**
-     * @var ValidatorInterface
-     */
-    private $validator;
+    private ValidatorInterface $validator;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
-        static::bootKernel();
-        $container = static::$kernel->getContainer();
-        $this->validator = $container->get('test.validator');
+        $this->validator = static::getContainer()->get('test.validator');
     }
 
-    public function testValid()
+    public function testValid(): void
     {
         $model = new Model();
         $errors = $this->validator->validate($model);
@@ -31,7 +27,7 @@ class ValidatorAnnotationTest extends WebTestCase
         $this->assertCount(0, $this->validator->validate($model));
     }
 
-    public function testCheckExistence()
+    public function testCheckExistence(): void
     {
         $model = new Model();
         $model->vatCheckExistence = '123';

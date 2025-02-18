@@ -2,41 +2,33 @@
 
 namespace Ddeboer\VatinBundle\Validator\Constraints;
 
-use Ddeboer\Vatin\Exception\ViesException;
-use Ddeboer\Vatin\Validator;
+use Ddeboer\Vatin\Exception\ViesExceptionInterface;
+use Ddeboer\Vatin\ValidatorInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ValidatorException;
 
 /**
  * Validate a VAT identification number using the ddeboer/vatin library
- *
  */
-class VatinValidator extends ConstraintValidator
+final class VatinValidator extends ConstraintValidator
 {
-    /**
-     * VATIN validator
-     *
-     * @var Validator
-     */
-    private $validator;
-
     /**
      * Constructor
      *
-     * @param Validator $validator VATIN validator
+     * @param ValidatorInterface $validator VATIN validator
      */
-    public function __construct(Validator $validator)
-    {
-        $this->validator = $validator;
+    public function __construct(
+        private readonly ValidatorInterface $validator
+    ) {
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
-        if (null === $value || '' === $value) {
+        if ('' === $value || !is_string($value) || !$constraint instanceof Vatin) {
             return;
         }
 
@@ -51,17 +43,14 @@ class VatinValidator extends ConstraintValidator
     /**
      * Is the value a valid VAT identification number?
      *
-     * @param string $value          Value
-     * @param bool   $checkExistence Also check whether the VAT number exists
-     *
-     * @return bool
+     * @param bool $checkExistence Also check whether the VAT number exists
      */
-    private function isValidVatin($value, $checkExistence): bool
+    private function isValidVatin(string $value, bool $checkExistence): bool
     {
         try {
             return $this->validator->isValid($value, $checkExistence);
-        } catch (ViesException $e) {
-            throw new ValidatorException('VIES service unreachable', null, $e);
+        } catch (ViesExceptionInterface $e) {
+            throw new ValidatorException('VIES service unreachable', previous: $e);
         }
     }
 }

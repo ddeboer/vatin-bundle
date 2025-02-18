@@ -2,5 +2,5 @@ vendor/
 composer.lock
 Tests/Functional/app/cache
 .idea
-/.phpunit.result.cache
+/.phpunit.cache
 /var/

@@ -6,30 +6,24 @@ use Symfony\Component\Validator\Constraint;
 
 /**
  * VAT identification number constraint
- *
- * @Annotation
  */
 #[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::IS_REPEATABLE)]
 class Vatin extends Constraint
 {
-    public $message = 'This is not a valid VAT identification number';
-    public $checkExistence = false;
+    public string $message = 'This is not a valid VAT identification number';
+    public bool $checkExistence = false;
 
     /**
      * Vatin constructor.
      *
-     * @param array|null  $options
-     * @param string|null $message
-     * @param bool|null   $checkExistence
-     * @param array|null  $groups
-     * @param null        $payload
+     * {@inheritDoc}
      */
     public function __construct(
-        array $options = null,
-        string $message = null,
-        bool $checkExistence = null,
-        array $groups = null,
-        $payload = null
+        ?array $options = null,
+        ?string $message = null,
+        ?bool $checkExistence = null,
+        ?array $groups = null,
+        mixed $payload = null
     ) {
         if ($message) {
             $options['message'] = $message;
