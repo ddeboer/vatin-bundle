@@ -1,0 +1,10 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    symfony:
+        containerXmlPath: var/cache/test/Ddeboer_VatinBundle_Tests_Functional_AppKernelTestDebugContainer.xml

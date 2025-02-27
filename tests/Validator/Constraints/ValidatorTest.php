@@ -3,11 +3,17 @@
 namespace Ddeboer\VatinBundle\Tests\Validator\Constraints;
 
 use Ddeboer\Vatin\Validator;
+use Ddeboer\Vatin\ValidatorInterface;
+use Ddeboer\Vatin\Vies\Client;
 use Ddeboer\VatinBundle\Validator\Constraints\Vatin;
 use Ddeboer\VatinBundle\Validator\Constraints\VatinValidator;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
+use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
+/**
+ * @extends ConstraintValidatorTestCase<VatinValidator>
+ */
 class ValidatorTest extends ConstraintValidatorTestCase
 {
     protected function createValidator(): ConstraintValidatorInterface
@@ -15,28 +21,28 @@ class ValidatorTest extends ConstraintValidatorTestCase
         return new VatinValidator(new Validator());
     }
 
-    public function testNullIsValid()
+    public function testNullIsValid(): void
     {
         $this->validator->validate(null, new Vatin());
 
         $this->assertNoViolation();
     }
 
-    public function testEmptyStringIsValid()
+    public function testEmptyStringIsValid(): void
     {
         $this->validator->validate('', new Vatin());
 
         $this->assertNoViolation();
     }
 
-    public function testValid()
+    public function testValid(): void
     {
         $this->validator->validate('NL123456789B01', new Vatin());
 
         $this->assertNoViolation();
     }
 
-    public function testInvalid()
+    public function testInvalid(): void
     {
         $this->validator->validate('123', new Vatin());
 
@@ -44,9 +50,9 @@ class ValidatorTest extends ConstraintValidatorTestCase
             ->assertRaised();
     }
 
-    public function testValidWithExistence()
+    public function testValidWithExistence(): void
     {
-        $validator = $this->getMockBuilder(Validator::class)
+        $validator = $this->getMockBuilder(ValidatorInterface::class)
             ->getMock();
 
         $validator->expects($this->once())
@@ -64,5 +70,13 @@ class ValidatorTest extends ConstraintValidatorTestCase
 
         $this->buildViolation('This is not a valid VAT identification number')
             ->assertRaised();
+    }
+
+    public function testFailedClient(): void
+    {
+        $this->expectException(ValidatorException::class);
+
+        $validator = new VatinValidator(new Validator(new Client('http://localhost')));
+        $validator->validate('NL123456789B01', new Vatin(message: 'Invalid VAT', checkExistence: true));
     }
 }

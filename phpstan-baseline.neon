@@ -1,0 +1,13 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method Ddeboer\\VatinBundle\\DdeboerVatinBundle\:\:loadExtension\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/DdeboerVatinBundle.php
+
+		-
+			message: '#^Method Ddeboer\\VatinBundle\\Validator\\Constraints\\Vatin\:\:__construct\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Validator/Constraints/Vatin.php
