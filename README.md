@@ -1,6 +1,6 @@
 VATIN bundle
 ============
-[![Latest Stable Version](https://poser.pugx.org/ddeboer/vatin-bundle/v/stable.png)](https://packagist.org/packages/ddeboer/vatin-bundle)
+[![Latest Stable Version](http://poser.pugx.org/ddeboer/vatin-bundle/v)](https://packagist.org/packages/ddeboer/vatin-bundle)
 
 A Symfony bundle for the [VATIN library](https://github.com/ddeboer/vatin).
 
