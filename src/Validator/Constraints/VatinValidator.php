@@ -28,7 +28,7 @@ final class VatinValidator extends ConstraintValidator
      */
     public function validate(mixed $value, Constraint $constraint): void
     {
-        if ('' === $value || !is_string($value) || !$constraint instanceof Vatin) {
+        if (null === $value || '' === $value || !is_string($value) || !$constraint instanceof Vatin) {
             return;
         }
 
