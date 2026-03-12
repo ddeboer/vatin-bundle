@@ -19,20 +19,16 @@ class Vatin extends Constraint
      * {@inheritDoc}
      */
     public function __construct(
-        ?array $options = null,
+        array $options = [],
         ?string $message = null,
         ?bool $checkExistence = null,
         ?array $groups = null,
         mixed $payload = null
     ) {
-        if ($message) {
-            $options['message'] = $message;
-        }
-        if ($checkExistence) {
-            $options['checkExistence'] = $checkExistence;
-        }
+        parent::__construct($options, $groups, $payload);
 
-        parent::__construct($options ?? [], $groups, $payload);
+        $this->message = $message ?? $this->message;
+        $this->checkExistence = $checkExistence ?? $this->checkExistence;
     }
 
     public function validatedBy(): string
